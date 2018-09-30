@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">TV Show</string>
+    <string name="latest">Latest</string>
+    <string name="popular">Popular</string>
+    <string name="on_air">On Air</string>
+    <string name="app_bar_image">App bar background image</string>
+    <string name="poster_image">Poster image</string>
+    <string name="view_type_error">Invalid view type, value of</string>
+    <string name="follow">Follow</string>
+    <string name="following">Following</string>
+    <string name="backdrop_image">Backdrop image</string>
+    <string name="overview">Overview</string>
+    <string name="seasons">Seasons</string>
+    <string name="actors">Actors</string>
+    <string name="similar">Similar</string>
+    <string name="preference_file_key">com.yongchun.tvshow.PREFERENCE_FILE_KEY</string>
+    <string name="rating">Rating: %s/10</string>
+    <string name="next_episode">Next: S%1$sE%2$s %3$s</string>
+</resources>

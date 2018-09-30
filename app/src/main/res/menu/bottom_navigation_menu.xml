@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_latest"
+        android:icon="@drawable/round_update_24"
+        android:title="@string/latest" />
+    <item
+        android:id="@+id/menu_popular"
+        android:icon="@drawable/round_live_tv_24"
+        android:title="@string/popular" />
+    <item
+        android:id="@+id/menu_on_air"
+        android:icon="@drawable/round_today_24"
+        android:title="@string/on_air" />
+</menu>
