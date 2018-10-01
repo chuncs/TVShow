@@ -6,4 +6,7 @@ public class Similar {
 
     private List<Popular> results;
 
+    public List<Popular> getResults() {
+        return results;
+    }
 }

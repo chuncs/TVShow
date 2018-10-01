@@ -16,9 +16,9 @@ import retrofit2.Response;
 public class DetailRepository {
 
     private static final String APPEND_TO_RESPONSE = "credits,similar";
-    private DetailCache detailCache = DetailCache.init();
+    private static DetailCache detailCache = DetailCache.init();
 
-    public LiveData<Detail> getDetail(String tvId) {
+    public static LiveData<Detail> getDetail(String tvId) {
         LiveData<Detail> cached = detailCache.get(tvId);
         if (cached != null) {
             return cached;

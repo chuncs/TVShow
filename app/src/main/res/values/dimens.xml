@@ -3,6 +3,8 @@
     <dimen name="bnv_elevation">8dp</dimen>
     <dimen name="padding">8dp</dimen>
     <dimen name="button_padding">4dp</dimen>
+    <dimen name="poster_width">95dp</dimen>
+    <dimen name="poster_height">142dp</dimen>
 
     <integer name="grid_span_count">2</integer>
 </resources>

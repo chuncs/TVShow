@@ -15,21 +15,20 @@ import com.udacity.classroom.yongchun.tvshow.model.Popular;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class FeedViewModel extends ViewModel {
+public class PopularViewModel extends ViewModel {
 
+    private static final String POPULAR = "popular";
     private LiveData<NetworkState> mNetworkState;
     private LiveData<PagedList<Popular>> mPopularLiveData;
-    private String mQuery;
 
-    public FeedViewModel(String query) {
-        mQuery = query;
+    public PopularViewModel() {
         init();
     }
 
     private void init() {
         Executor executor = Executors.newFixedThreadPool(5);
 
-        FeedDataFactory feedDataFactory = new FeedDataFactory(mQuery);
+        FeedDataFactory feedDataFactory = new FeedDataFactory(POPULAR);
         mNetworkState = Transformations.switchMap(feedDataFactory.getMutableLiveData(),
                 (Function<FeedDataSource, LiveData<NetworkState>>) FeedDataSource::getNetworkState);
 

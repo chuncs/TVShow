@@ -24,9 +24,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupUI() {
-//        mBinding.collapsingToolbar.setExpandedTitleColor(getResources().getColor(R.color.white));
-//        mBinding.collapsingToolbar.setCollapsedTitleTextColor(getResources().getColor(R.color.white));
-
         mBinding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_latest:

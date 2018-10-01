@@ -6,4 +6,7 @@ public class Credit {
 
     private List<Cast> cast;
 
+    public List<Cast> getCast() {
+        return cast;
+    }
 }
