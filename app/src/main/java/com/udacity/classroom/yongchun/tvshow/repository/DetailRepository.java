@@ -36,7 +36,7 @@ public class DetailRepository {
 
                     @Override
                     public void onFailure(@NonNull Call<Detail> call, @NonNull Throwable t) {
-
+                        detailCache.clear(tvId);
                     }
                 });
 

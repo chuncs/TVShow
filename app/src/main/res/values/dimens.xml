@@ -5,6 +5,9 @@
     <dimen name="button_padding">4dp</dimen>
     <dimen name="poster_width">95dp</dimen>
     <dimen name="poster_height">142dp</dimen>
+    <dimen name="small_padding">4dp</dimen>
+    <dimen name="margin">8dp</dimen>
+    <dimen name="match_constraint">0dp</dimen>
 
     <integer name="grid_span_count">2</integer>
 </resources>

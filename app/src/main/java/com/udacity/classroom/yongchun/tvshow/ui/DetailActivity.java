@@ -9,49 +9,67 @@ import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.SnapHelper;
 
 import com.udacity.classroom.yongchun.tvshow.R;
-import com.udacity.classroom.yongchun.tvshow.adapter.HorizontalAdapter;
+import com.udacity.classroom.yongchun.tvshow.adapter.RecyclerAdapter;
 import com.udacity.classroom.yongchun.tvshow.databinding.ActivityDetailBinding;
 import com.udacity.classroom.yongchun.tvshow.model.Detail;
 import com.udacity.classroom.yongchun.tvshow.viewmodel.DetailViewModel;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class DetailActivity extends AppCompatActivity {
 
     private ActivityDetailBinding mBinding;
+    private SharedPreferences sharedPref;
+    public static Deque<String> tvIdStack = new ArrayDeque<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
+        mBinding.toolbar.setNavigationOnClickListener(view -> onBackPressed());
 
-        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), 0);
+        sharedPref = getSharedPreferences(getString(R.string.preference_file_key), 0);
         String tvId = sharedPref.getString(getString(R.string.CURRENT_TV_ID), null);
+
+        if (savedInstanceState == null) {
+            tvIdStack.addFirst(tvId);
+        }
 
         DetailViewModel detailViewModel = ViewModelProviders.of(this).get(DetailViewModel.class);
 
         detailViewModel.init(tvId);
         detailViewModel.getDetail().observe(this, detail -> {
-            mBinding.setDetail(detail);
-            adapterSetup(detail);
+            if (detail != null) {
+                mBinding.setDetail(detail);
+                adapterSetup(detail);
+            }
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        tvIdStack.removeFirst();
+        sharedPref.edit().putString(getString(R.string.CURRENT_TV_ID), tvIdStack.peekFirst()).apply();
+    }
+
     private void adapterSetup(Detail detail) {
-        SnapHelper snapHelper = new LinearSnapHelper();
 
         //season horizontal recyclerview adapter
-        HorizontalAdapter seasonAdapter = new HorizontalAdapter(this);
+        RecyclerAdapter seasonAdapter = new RecyclerAdapter(this);
+        SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(mBinding.listSeason);
         seasonAdapter.setSeasons(detail.getSeasons());
         mBinding.listSeason.setAdapter(seasonAdapter);
 
         //actor horizontal recyclerview adapter
-        HorizontalAdapter actorAdapter = new HorizontalAdapter(this);
-//        snapHelper.attachToRecyclerView(mBinding.listActor);
+        RecyclerAdapter actorAdapter = new RecyclerAdapter(this);
         actorAdapter.setActors(detail.getCredits().getCast());
         mBinding.listActor.setAdapter(actorAdapter);
 
         //similar horizontal recyclerview adapter
-        HorizontalAdapter similarAdapter = new HorizontalAdapter(this);
+        RecyclerAdapter similarAdapter = new RecyclerAdapter(this);
         similarAdapter.setSimilar(detail.getSimilar().getResults());
         mBinding.listSimilar.setAdapter(similarAdapter);
     }

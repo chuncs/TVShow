@@ -8,25 +8,29 @@ import android.view.ViewGroup;
 
 import com.udacity.classroom.yongchun.tvshow.R;
 import com.udacity.classroom.yongchun.tvshow.databinding.ItemActorBinding;
+import com.udacity.classroom.yongchun.tvshow.databinding.ItemEpisodeBinding;
 import com.udacity.classroom.yongchun.tvshow.databinding.ItemSeasonBinding;
 import com.udacity.classroom.yongchun.tvshow.databinding.ItemSimilarBinding;
 import com.udacity.classroom.yongchun.tvshow.model.Cast;
+import com.udacity.classroom.yongchun.tvshow.model.Episode;
 import com.udacity.classroom.yongchun.tvshow.model.Popular;
 import com.udacity.classroom.yongchun.tvshow.model.Season;
 
 import java.util.List;
 
-public class HorizontalAdapter extends RecyclerView.Adapter {
+public class RecyclerAdapter extends RecyclerView.Adapter {
 
     private static final int VIEW_TYPE_SEASON = 0;
     private static final int VIEW_TYPE_ACTOR = 1;
     private static final int VIEW_TYPE_SIMILAR = 2;
+    private static final int VIEW_TYPE_EPISODE = 3;
     private Context mContext;
     private List<Season> mSeasons;
     private List<Cast> mActors;
     private List<Popular> mSimilar;
+    private List<Episode> mEpisodes;
 
-    public HorizontalAdapter(Context context) {
+    public RecyclerAdapter(Context context) {
         mContext = context;
     }
 
@@ -45,6 +49,9 @@ public class HorizontalAdapter extends RecyclerView.Adapter {
             case VIEW_TYPE_SIMILAR:
                 ItemSimilarBinding similarBinding = ItemSimilarBinding.inflate(layoutInflater, parent, false);
                 return new SimilarItemViewHolder(mContext, similarBinding);
+            case VIEW_TYPE_EPISODE:
+                ItemEpisodeBinding episodeBinding = ItemEpisodeBinding.inflate(layoutInflater, parent, false);
+                return new EpisodeItemViewHolder(mContext, episodeBinding);
             default:
                 throw new IllegalArgumentException(mContext.getString(R.string.view_type_error) + viewType);
         }
@@ -58,12 +65,14 @@ public class HorizontalAdapter extends RecyclerView.Adapter {
             ((ActorItemViewHolder) holder).bindView(mActors.get(position));
         } else if (holder instanceof SimilarItemViewHolder) {
             ((SimilarItemViewHolder) holder).bindView(mSimilar.get(position));
+        } else if (holder instanceof EpisodeItemViewHolder) {
+            ((EpisodeItemViewHolder) holder).bindView(mEpisodes.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        return getSeasonSize() + getActorSize() + getSimilarSize();
+        return getSeasonSize() + getActorSize() + getSimilarSize() + getEpisodeSize();
     }
 
     @Override
@@ -74,6 +83,8 @@ public class HorizontalAdapter extends RecyclerView.Adapter {
             return VIEW_TYPE_ACTOR;
         } else if (getSimilarSize() > 0) {
             return VIEW_TYPE_SIMILAR;
+        } else if (getEpisodeSize() > 0) {
+            return VIEW_TYPE_EPISODE;
         } else {
             return -1;
         }
@@ -91,6 +102,10 @@ public class HorizontalAdapter extends RecyclerView.Adapter {
         return mSimilar != null ? mSimilar.size() : 0;
     }
 
+    private int getEpisodeSize() {
+        return mEpisodes != null ? mEpisodes.size() : 0;
+    }
+
     public void setSeasons(List<Season> seasons) {
         mSeasons = seasons;
         notifyDataSetChanged();
@@ -103,6 +118,11 @@ public class HorizontalAdapter extends RecyclerView.Adapter {
 
     public void setSimilar(List<Popular> similar) {
         mSimilar = similar;
+        notifyDataSetChanged();
+    }
+
+    public void setEpisodes(List<Episode> episodes) {
+        mEpisodes = episodes;
         notifyDataSetChanged();
     }
 }

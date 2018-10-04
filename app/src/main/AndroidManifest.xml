@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.DetailActivity" />
+        <activity android:name=".ui.SeasonActivity" />
+        <activity android:name=".ui.EpisodeActivity"></activity>
     </application>
 
 </manifest>

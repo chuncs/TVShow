@@ -2,6 +2,7 @@ package com.udacity.classroom.yongchun.tvshow.service;
 
 import com.udacity.classroom.yongchun.tvshow.model.Detail;
 import com.udacity.classroom.yongchun.tvshow.model.Feed;
+import com.udacity.classroom.yongchun.tvshow.model.Season;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -19,4 +20,9 @@ public interface TVService {
     Call<Detail> fetchDetail(@Path("tv_id") String id,
                              @Query("api_key") String apiKey,
                              @Query("append_to_response") String appendix);
+
+    @GET("3/tv/{tv_id}/season/{season_number}")
+    Call<Season> fetchSeason(@Path("tv_id") String tvId,
+                             @Path("season_number") String seasonNumber,
+                             @Query("api_key") String apiKey);
 }

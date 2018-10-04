@@ -1,13 +1,16 @@
 package com.udacity.classroom.yongchun.tvshow.model;
 
+import java.util.List;
+
 public class Season {
 
-    private String id;
+    private String name;
     private String poster_path;
     private String season_number;
+    private List<Episode> episodes;
 
-    public String getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
     public String getPosterPath() {
@@ -16,5 +19,9 @@ public class Season {
 
     public String getSeasonNumber() {
         return season_number;
+    }
+
+    public List<Episode> getEpisodes() {
+        return episodes;
     }
 }

@@ -31,6 +31,7 @@ public class PopularItemViewHolder extends RecyclerView.ViewHolder {
                     .edit();
             sharedPref.putString(mContext.getString(R.string.CURRENT_TV_ID), String.valueOf(popular.getId()));
             sharedPref.apply();
+
             Intent intent = new Intent(mContext, DetailActivity.class);
             mContext.startActivity(intent);
         });

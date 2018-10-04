@@ -37,4 +37,10 @@ public class DetailCache {
         }
         mCache.put(tvId, data);
     }
+
+    public void clear(String tvId) {
+        if (mCache.containsKey(tvId)) {
+            mCache.remove(tvId);
+        }
+    }
 }
