@@ -1,6 +1,7 @@
 package com.udacity.classroom.yongchun.tvshow.service;
 
 import com.udacity.classroom.yongchun.tvshow.model.Detail;
+import com.udacity.classroom.yongchun.tvshow.model.Episode;
 import com.udacity.classroom.yongchun.tvshow.model.Feed;
 import com.udacity.classroom.yongchun.tvshow.model.Season;
 
@@ -25,4 +26,10 @@ public interface TVService {
     Call<Season> fetchSeason(@Path("tv_id") String tvId,
                              @Path("season_number") String seasonNumber,
                              @Query("api_key") String apiKey);
+
+    @GET("3/tv/{tv_id}/season/{season_number}/episode/{episode_number}")
+    Call<Episode> fetchEpisode(@Path("tv_id") String tvId,
+                               @Path("season_number") String seasonNumber,
+                               @Path("episode_number") String episodeNumber,
+                               @Query("api_key") String apiKey);
 }

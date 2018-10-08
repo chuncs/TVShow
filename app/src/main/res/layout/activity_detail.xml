@@ -10,6 +10,9 @@
         <variable
             name="detail"
             type="com.udacity.classroom.yongchun.tvshow.model.Detail" />
+        <variable
+            name="dbViewModel"
+            type="com.udacity.classroom.yongchun.tvshow.viewmodel.DatabaseViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -55,6 +58,7 @@
                     android:layout_margin="@dimen/padding"
                     android:background="@drawable/button_follow_background"
                     android:drawableStart="@drawable/button_follow_icon"
+                    android:onClick="@{(v) -> dbViewModel.onFollowButtonClick(v, detail)}"
                     android:padding="@dimen/button_padding"
                     android:textColor="@color/button_follow_text"
                     android:textOff="@string/follow"
@@ -96,10 +100,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:contentDescription="@string/poster_image"
-                            android:visibility="@{detail.posterPath != null ? View.VISIBLE : View.GONE}"
+                            android:visibility="@{detail.poster_path != null ? View.VISIBLE : View.GONE}"
                             app:error="@{@drawable/placeholder}"
                             app:placeholder="@{@drawable/placeholder}"
-                            app:posterUrl="@{detail.posterPath}"
+                            app:posterUrl="@{detail.poster_path}"
                             tools:src="@sample/tools:avatars" />
 
                         <LinearLayout
@@ -136,8 +140,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@{@string/next_episode(detail.nextEpisode.season, detail.nextEpisode.episode, detail.nextEpisode.airDate)}"
-                                android:visibility="@{detail.nextEpisode != null ? View.VISIBLE : View.GONE}"
+                                android:text="@{@string/next_episode(detail.next_episode_to_air.seasonNumber, detail.next_episode_to_air.episodeNumber, detail.next_episode_to_air.airDate)}"
+                                android:visibility="@{detail.next_episode_to_air != null ? View.VISIBLE : View.GONE}"
                                 tools:text="@sample/tools:date/mmddyy" />
                         </LinearLayout>
                     </LinearLayout>

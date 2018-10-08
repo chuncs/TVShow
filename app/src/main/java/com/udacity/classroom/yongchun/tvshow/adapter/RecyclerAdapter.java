@@ -9,9 +9,11 @@ import android.view.ViewGroup;
 import com.udacity.classroom.yongchun.tvshow.R;
 import com.udacity.classroom.yongchun.tvshow.databinding.ItemActorBinding;
 import com.udacity.classroom.yongchun.tvshow.databinding.ItemEpisodeBinding;
+import com.udacity.classroom.yongchun.tvshow.databinding.ItemLatestBinding;
 import com.udacity.classroom.yongchun.tvshow.databinding.ItemSeasonBinding;
 import com.udacity.classroom.yongchun.tvshow.databinding.ItemSimilarBinding;
 import com.udacity.classroom.yongchun.tvshow.model.Cast;
+import com.udacity.classroom.yongchun.tvshow.model.Detail;
 import com.udacity.classroom.yongchun.tvshow.model.Episode;
 import com.udacity.classroom.yongchun.tvshow.model.Popular;
 import com.udacity.classroom.yongchun.tvshow.model.Season;
@@ -24,11 +26,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
     private static final int VIEW_TYPE_ACTOR = 1;
     private static final int VIEW_TYPE_SIMILAR = 2;
     private static final int VIEW_TYPE_EPISODE = 3;
+    private static final int VIEW_TYPE_LATEST = 4;
     private Context mContext;
     private List<Season> mSeasons;
     private List<Cast> mActors;
     private List<Popular> mSimilar;
     private List<Episode> mEpisodes;
+    private List<Detail> mLatest;
 
     public RecyclerAdapter(Context context) {
         mContext = context;
@@ -52,6 +56,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
             case VIEW_TYPE_EPISODE:
                 ItemEpisodeBinding episodeBinding = ItemEpisodeBinding.inflate(layoutInflater, parent, false);
                 return new EpisodeItemViewHolder(mContext, episodeBinding);
+            case VIEW_TYPE_LATEST:
+                ItemLatestBinding latestBinding = ItemLatestBinding.inflate(layoutInflater, parent, false);
+                return new LatestItemViewHolder(mContext, latestBinding);
             default:
                 throw new IllegalArgumentException(mContext.getString(R.string.view_type_error) + viewType);
         }
@@ -67,12 +74,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
             ((SimilarItemViewHolder) holder).bindView(mSimilar.get(position));
         } else if (holder instanceof EpisodeItemViewHolder) {
             ((EpisodeItemViewHolder) holder).bindView(mEpisodes.get(position));
+        } else if (holder instanceof LatestItemViewHolder) {
+            ((LatestItemViewHolder) holder).bindView(mLatest.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        return getSeasonSize() + getActorSize() + getSimilarSize() + getEpisodeSize();
+        return getSeasonSize() + getActorSize() + getSimilarSize() + getEpisodeSize() + getLatestSize();
     }
 
     @Override
@@ -85,6 +94,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
             return VIEW_TYPE_SIMILAR;
         } else if (getEpisodeSize() > 0) {
             return VIEW_TYPE_EPISODE;
+        } else if (getLatestSize() > 0){
+            return VIEW_TYPE_LATEST;
         } else {
             return -1;
         }
@@ -106,6 +117,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
         return mEpisodes != null ? mEpisodes.size() : 0;
     }
 
+    private int getLatestSize() {
+        return mLatest != null ? mLatest.size() : 0;
+    }
+
     public void setSeasons(List<Season> seasons) {
         mSeasons = seasons;
         notifyDataSetChanged();
@@ -123,6 +138,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
 
     public void setEpisodes(List<Episode> episodes) {
         mEpisodes = episodes;
+        notifyDataSetChanged();
+    }
+
+    public void setLatest(List<Detail> latest) {
+        mLatest = latest;
         notifyDataSetChanged();
     }
 }

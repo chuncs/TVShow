@@ -7,8 +7,8 @@
 
         <import type="android.view.View" />
         <variable
-            name="episode"
-            type="com.udacity.classroom.yongchun.tvshow.model.Episode" />
+            name="detail"
+            type="com.udacity.classroom.yongchun.tvshow.model.Detail" />
     </data>
 
     <android.support.v7.widget.CardView
@@ -29,54 +29,53 @@
                 android:layout_marginStart="@dimen/margin"
                 android:layout_marginTop="@dimen/margin"
                 android:contentDescription="@string/poster_image"
-                android:visibility="@{episode.stillPath != null ? View.VISIBLE : View.GONE}"
+                android:visibility="@{detail.poster_path != null ? View.VISIBLE : View.GONE}"
                 app:error="@{@drawable/placeholder}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:placeholder="@{@android:drawable/picture_frame}"
-                app:posterUrl="@{episode.stillPath}"
+                app:posterUrl="@{detail.poster_path}"
                 tools:src="@sample/tools:avatars" />
 
             <TextView
                 android:id="@+id/text_episode_name"
                 android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin"
-                android:layout_marginStart="@dimen/margin"
-                android:layout_marginTop="@dimen/margin"
-                android:text="@{@string/episode_name(episode.episodeNumber, episode.name)}"
+                android:layout_margin="@dimen/margin"
+                android:text="@{detail.name}"
+                android:textAppearance="@android:style/TextAppearance.Material.Large"
+                app:layout_constraintBottom_toTopOf="@+id/text_last_date"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/image_poster"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@sample/tools:full_names" />
 
             <TextView
-                android:id="@+id/text_date"
+                android:id="@+id/text_last_date"
                 android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin"
-                android:layout_marginStart="@dimen/margin"
-                android:layout_marginTop="@dimen/margin"
-                android:text="@{episode.airDate}"
+                android:layout_margin="@dimen/margin"
+                android:text="@{@string/last_episode(detail.last_episode_to_air.seasonNumber, detail.last_episode_to_air.episodeNumber, detail.last_episode_to_air.airDate)}"
+                android:visibility="@{detail.last_episode_to_air.airDate != null ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toTopOf="@+id/text_next_date"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/image_poster"
                 app:layout_constraintTop_toBottomOf="@+id/text_episode_name"
                 tools:text="@sample/tools:date/mmddyy" />
 
             <TextView
-                android:id="@+id/text_overview"
+                android:id="@+id/text_next_date"
                 android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin"
-                android:layout_marginStart="@dimen/margin"
-                android:layout_marginTop="@dimen/margin"
-                android:text="@{episode.overview}"
+                android:layout_margin="@dimen/margin"
+                android:text="@{@string/next_episode(detail.next_episode_to_air.seasonNumber, detail.next_episode_to_air.episodeNumber, detail.next_episode_to_air.airDate)}"
+                android:visibility="@{detail.next_episode_to_air.airDate != null ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/image_poster"
-                app:layout_constraintTop_toBottomOf="@+id/text_date"
-                tools:text="@sample/tools:lorem/random" />
-
+                app:layout_constraintTop_toBottomOf="@+id/text_last_date"
+                tools:text="@sample/tools:date/mmddyy" />
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </layout>

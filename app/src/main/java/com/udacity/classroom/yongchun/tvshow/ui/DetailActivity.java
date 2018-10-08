@@ -12,6 +12,7 @@ import com.udacity.classroom.yongchun.tvshow.R;
 import com.udacity.classroom.yongchun.tvshow.adapter.RecyclerAdapter;
 import com.udacity.classroom.yongchun.tvshow.databinding.ActivityDetailBinding;
 import com.udacity.classroom.yongchun.tvshow.model.Detail;
+import com.udacity.classroom.yongchun.tvshow.viewmodel.DatabaseViewModel;
 import com.udacity.classroom.yongchun.tvshow.viewmodel.DetailViewModel;
 
 import java.util.ArrayDeque;
@@ -21,7 +22,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private ActivityDetailBinding mBinding;
     private SharedPreferences sharedPref;
-    public static Deque<String> tvIdStack = new ArrayDeque<>();
+    private static Deque<String> tvIdStack = new ArrayDeque<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,14 @@ public class DetailActivity extends AppCompatActivity {
             if (detail != null) {
                 mBinding.setDetail(detail);
                 adapterSetup(detail);
+            }
+        });
+
+        DatabaseViewModel databaseViewModel = ViewModelProviders.of(this).get(DatabaseViewModel.class);
+        mBinding.setDbViewModel(databaseViewModel);
+        databaseViewModel.getDetailById(tvId).observe(this, detail -> {
+            if (detail != null) {
+                mBinding.buttonFollow.setChecked(true);
             }
         });
     }
