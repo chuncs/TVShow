@@ -38,6 +38,7 @@ public class OnAirViewModel extends ViewModel {
                 .setPageSize(20)
                 .build();
 
+        //noinspection unchecked
         mOnAirLiveData = new LivePagedListBuilder(feedDataFactory, config)
                 .setFetchExecutor(executor)
                 .build();

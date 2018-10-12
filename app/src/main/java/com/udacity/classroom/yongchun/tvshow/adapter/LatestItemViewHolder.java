@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.udacity.classroom.yongchun.tvshow.R;
 import com.udacity.classroom.yongchun.tvshow.databinding.ItemLatestBinding;

@@ -21,7 +21,20 @@
         </activity>
         <activity android:name=".ui.DetailActivity" />
         <activity android:name=".ui.SeasonActivity" />
-        <activity android:name=".ui.EpisodeActivity"></activity>
+        <activity android:name=".ui.EpisodeActivity" />
+
+        <receiver android:name=".widget.TvShowWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/tv_show_widget_info" />
+        </receiver>
+
+        <service android:name=".widget.TvShowWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>

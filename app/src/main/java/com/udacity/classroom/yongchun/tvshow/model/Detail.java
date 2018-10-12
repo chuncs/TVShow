@@ -43,6 +43,7 @@ public class Detail {
         this.next_episode_to_air = next_episode_to_air;
     }
 
+    @NonNull
     public String getId() {
         return id;
     }

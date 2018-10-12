@@ -16,6 +16,9 @@ public interface DetailDao {
     @Query("SELECT * FROM detail_table ORDER BY last_air_date DESC")
     LiveData<List<Detail>> loadAllDetails();
 
+    @Query("SELECT * FROM detail_table ORDER BY last_air_date DESC")
+    List<Detail> nLoadAllDetails();
+
     @Query("SELECT * FROM detail_table WHERE id = :id")
     LiveData<Detail> loadDetailById(String id);
 

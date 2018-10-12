@@ -8,6 +8,17 @@
     <dimen name="small_padding">4dp</dimen>
     <dimen name="margin">8dp</dimen>
     <dimen name="match_constraint">0dp</dimen>
+    <dimen name="action_bar_size">56dp</dimen>
+    <dimen name="image_feed_height">278dp</dimen>
+    <dimen name="background_protection_height">50dp</dimen>
 
     <integer name="grid_span_count">2</integer>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="widget_image_width">56dp</dimen>
+    <dimen name="widget_image_height">85dp</dimen>
 </resources>

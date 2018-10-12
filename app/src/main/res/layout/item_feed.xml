@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/image_tv_poster"
             android:layout_width="match_parent"
-            android:layout_height="278dp"
+            android:layout_height="@dimen/image_feed_height"
             android:contentDescription="@{popular.name}"
             android:scaleType="centerCrop"
             app:error="@{@drawable/placeholder}"
@@ -29,7 +29,7 @@
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/background_protection_height"
             android:layout_gravity="bottom"
             android:background="@drawable/photo_background_protection" />
 

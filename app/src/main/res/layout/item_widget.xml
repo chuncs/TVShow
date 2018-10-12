@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/widget_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/small_padding">
+
+    <ImageView
+        android:id="@+id/widget_poster"
+        android:layout_width="@dimen/widget_image_width"
+        android:layout_height="@dimen/widget_image_height"
+        android:layout_gravity="center"
+        android:contentDescription="@string/poster_image"
+        tools:src="@sample/tools:avatars" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/padding"
+        android:paddingStart="@dimen/padding">
+
+        <TextView
+            android:id="@+id/widget_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            tools:text="@sample/tools:full_names" />
+
+        <TextView
+            android:id="@+id/widget_last"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            tools:text="@sample/tools:date/mmddyy" />
+
+        <TextView
+            android:id="@+id/widget_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            tools:text="@sample/tools:date/mmddyy" />
+    </LinearLayout>
+</LinearLayout>

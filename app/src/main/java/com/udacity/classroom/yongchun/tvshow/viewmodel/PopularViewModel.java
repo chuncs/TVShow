@@ -38,6 +38,7 @@ public class PopularViewModel extends ViewModel {
                 .setPageSize(20)
                 .build();
 
+        //noinspection unchecked
         mPopularLiveData = new LivePagedListBuilder(feedDataFactory, config)
                 .setFetchExecutor(executor)
                 .build();

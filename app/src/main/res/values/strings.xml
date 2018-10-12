@@ -9,7 +9,6 @@
     <string name="latest">Latest</string>
     <string name="popular">Popular</string>
     <string name="on_air">On Air</string>
-    <string name="app_bar_image">App bar background image</string>
     <string name="poster_image">Poster image</string>
     <string name="view_type_error">Invalid view type, value of</string>
     <string name="follow">Follow</string>
@@ -21,10 +20,13 @@
     <string name="actors">Actors</string>
     <string name="similar">Similar</string>
     <string name="rating">Rating: %s/10</string>
-    <string name="last_episode">Last: S%1$sE%2$s %3$s</string>
-    <string name="next_episode">Next: S%1$sE%2$s %3$s</string>
     <string name="episode_name">%1$s. %2$s</string>
     <string name="episode_title">S%1$sE%2$s: %3$s</string>
     <string name="episode">Episode</string>
     <string name="guests">Guests</string>
+    <string name="last_episode">Last: S%1$sE%2$s %3$s</string>
+    <string name="last_unknown">Last: Unknown</string>
+    <string name="next_episode">Next: S%1$sE%2$s %3$s</string>
+    <string name="next_unknown">Next: Unknown</string>
+    <string name="empty_view_text">You haven\'t follow any show yet.</string>
 </resources>
