@@ -32,4 +32,8 @@ public interface TVService {
                                @Path("season_number") String seasonNumber,
                                @Path("episode_number") String episodeNumber,
                                @Query("api_key") String apiKey);
+
+    @GET("3/tv/{tv_id}")
+    Call<Detail> syncDetail(@Path("tv_id") String id,
+                            @Query("api_key") String apiKey);
 }

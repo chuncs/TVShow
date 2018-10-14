@@ -39,5 +39,6 @@ public class DatabaseViewModel extends AndroidViewModel {
         } else {
             mRepository.delete(detail.getId());
         }
+        mRepository.widgetChange();
     }
 }

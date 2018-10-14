@@ -11,7 +11,7 @@ public class Feed implements Parcelable {
     private int total_pages;
     private List<Popular> results;
 
-    protected Feed(Parcel in) {
+    private Feed(Parcel in) {
         page = in.readInt();
         total_pages = in.readInt();
         results = in.createTypedArrayList(Popular.CREATOR);

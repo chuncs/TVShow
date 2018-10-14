@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "757353368526",
+    "firebase_url": "https://tv-show-4ac84.firebaseio.com",
+    "project_id": "tv-show-4ac84",
+    "storage_bucket": "tv-show-4ac84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757353368526:android:aee9b8a047837836",
+        "android_client_info": {
+          "package_name": "com.udacity.classroom.yongchun.tvshow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "757353368526-672q5q8l2e70gkseq46jh41s3lpvu3ld.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTEhC0LjjbTx1NyRew1lJzj2CVaTr-Mf8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

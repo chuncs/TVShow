@@ -52,7 +52,7 @@ public class TvShowWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction().equals(OPEN_ACTION)) {
+        if (intent.getAction() != null && intent.getAction().equals(OPEN_ACTION)) {
             String tvId = intent.getStringExtra(EXTRA_ITEM);
             Intent detailIntent = new Intent(context, DetailActivity.class);
 
@@ -62,7 +62,7 @@ public class TvShowWidgetProvider extends AppWidgetProvider {
             sharedPref.putString(context.getString(R.string.CURRENT_TV_ID), tvId);
             sharedPref.apply();
 
-            detailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            detailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
             context.startActivity(detailIntent);
         }
 

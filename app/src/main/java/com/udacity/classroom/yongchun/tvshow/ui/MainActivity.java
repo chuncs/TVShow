@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.udacity.classroom.yongchun.tvshow.R;
 import com.udacity.classroom.yongchun.tvshow.adapter.ViewPagerAdapter;
 import com.udacity.classroom.yongchun.tvshow.databinding.ActivityMainBinding;
+import com.udacity.classroom.yongchun.tvshow.sync.TvShowSyncUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         setupUI();
+        TvShowSyncUtils.initialize(this);
     }
 
     private void setupUI() {

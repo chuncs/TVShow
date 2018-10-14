@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -35,6 +36,12 @@
 
         <service android:name=".widget.TvShowWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
+        <service android:exported="false"
+            android:name=".sync.TvShowSyncService">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

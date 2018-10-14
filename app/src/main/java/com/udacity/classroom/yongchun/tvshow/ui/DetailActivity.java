@@ -38,7 +38,6 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         DetailViewModel detailViewModel = ViewModelProviders.of(this).get(DetailViewModel.class);
-
         detailViewModel.init(tvId);
         detailViewModel.getDetail().observe(this, detail -> {
             if (detail != null) {

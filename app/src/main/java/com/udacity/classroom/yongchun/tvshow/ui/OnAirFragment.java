@@ -2,6 +2,7 @@ package com.udacity.classroom.yongchun.tvshow.ui;
 
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,9 +17,17 @@ import com.udacity.classroom.yongchun.tvshow.databinding.FragmentOnAirBinding;
 import com.udacity.classroom.yongchun.tvshow.viewmodel.OnAirViewModel;
 
 public class OnAirFragment extends Fragment {
-    
+
+    private Context mContext;
+
     public OnAirFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = context;
     }
 
     @Override
@@ -27,7 +36,7 @@ public class OnAirFragment extends Fragment {
         FragmentOnAirBinding binding = DataBindingUtil.inflate(inflater,
                 R.layout.fragment_on_air, container, false);
         OnAirViewModel viewModel = ViewModelProviders.of(this).get(OnAirViewModel.class);
-        FeedListAdapter adapter = new FeedListAdapter(getContext());
+        FeedListAdapter adapter = new FeedListAdapter(mContext);
 
         viewModel.getOnAirLiveData().observe(this, adapter::submitList);
         viewModel.getNetworkState().observe(this, adapter::setNetworkState);

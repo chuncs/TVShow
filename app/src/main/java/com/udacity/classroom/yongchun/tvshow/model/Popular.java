@@ -9,7 +9,7 @@ public class Popular implements Parcelable {
     private long id;
     private String poster_path;
 
-    protected Popular(Parcel in) {
+    private Popular(Parcel in) {
         name = in.readString();
         id = in.readLong();
         poster_path = in.readString();
